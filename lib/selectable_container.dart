@@ -5,47 +5,60 @@ import 'package:flutter/material.dart';
 /// Box that can be tapped.
 /// When selected a check Icon appears
 class SelectableContainer extends StatefulWidget {
-  /// Default dialogBackgroundColor
-  Color selectedBackgroundColor;
+  /// Background color when container is selected.
+  /// Default value : dialogBackgroundColor
+  final Color selectedBackgroundColor;
 
-  /// Default dialogBackgroundColor
-  Color unselectedBackgroundColor;
+  /// Background color when container is not selected.
+  /// Default value : dialogBackgroundColor
+  final Color unselectedBackgroundColor;
 
-  /// Default primaryColor
-  Color selectedBorderColor;
+  /// Border color when container is selected.
+  /// Default value : primaryColor
+  final Color selectedBorderColor;
 
-  /// Default primaryColorDark
-  Color unselectedBorderColor;
+  /// Border color when container is not selected.
+  /// Default value :primaryColorDark
+  final Color unselectedBorderColor;
 
-  /// Default white color
-  Color iconColor;
+  /// Icon's color
+  /// Default value : white
+  final Color iconColor;
 
-  /// Default 16
-  int iconSize;
+  /// Icon's size
+  /// Default value : 16
+  final int iconSize;
 
-  /// Content
-  Widget child;
+  /// The child to render inside the container
+  final Widget child;
 
-  /// Default 2 pixels
-  int borderSize;
+  /// Border size
+  /// Default value : 2 pixels
+  final int borderSize;
 
-  /// Callback when  container get tapped
-  Function onPressed;
+  /// Callback when container get tapped
+  final Function onPressed;
 
-  /// Default 0.5
-  double unselectedOpacity;
+  /// Opacity when container is not selected.
+  /// When not 1 it will be animated when tapped.
+  /// Default value : 0.5
+  final double unselectedOpacity;
 
-  /// In milliseconds. Default 600
-  int opacityAnimationDuration;
+  /// Opacity animation duration in milliseconds.
+  /// Default value : 600
+  final int opacityAnimationDuration;
 
-  /// Default Icons.check
-  IconData icon;
+  /// Icon to be shown when selected.
+  /// Default value : Icons.check
+  final IconData icon;
 
-  /// Default Alignment.topRight
-  Alignment iconAlignment;
+  /// Icon position.
+  /// Default value : Alignment.topRight
+  final Alignment iconAlignment;
 
-  /// Default no padding
-  double padding;
+  /// Padding of child content
+  /// Default value : 0.0
+  final double padding;
 
   @override
   _SelectableContainerState createState() => _SelectableContainerState();
@@ -70,27 +83,29 @@ class SelectableContainer extends StatefulWidget {
 class _SelectableContainerState extends State<SelectableContainer> {
   bool _selected = false;
 
+  Color _selectedBackgroundColor;
+  Color _unselectedBackgroundColor;
+  Color _selectedBorderColor;
+  Color _unselectedBorderColor;
+  IconData _icon;
+
   void assingDefaultValues() {
     var theme = Theme.of(context);
 
-    this.widget.selectedBackgroundColor =
-        this.widget.selectedBackgroundColor == null
-            ? theme.dialogBackgroundColor
-            : this.widget.selectedBackgroundColor;
-    this.widget.unselectedBackgroundColor =
-        this.widget.unselectedBackgroundColor == null
-            ? theme.dialogBackgroundColor
-            : this.widget.unselectedBackgroundColor;
-    this.widget.selectedBorderColor = this.widget.selectedBorderColor == null
+    _selectedBackgroundColor = this.widget.selectedBackgroundColor == null
+        ? theme.dialogBackgroundColor
+        : this.widget.selectedBackgroundColor;
+    _unselectedBackgroundColor = this.widget.unselectedBackgroundColor == null
+        ? theme.dialogBackgroundColor
+        : this.widget.unselectedBackgroundColor;
+    _selectedBorderColor = this.widget.selectedBorderColor == null
         ? theme.primaryColor
         : this.widget.selectedBorderColor;
-    this.widget.unselectedBorderColor =
-        this.widget.unselectedBorderColor == null
-            ? theme.primaryColorDark
-            : this.widget.unselectedBorderColor;
+    _unselectedBorderColor = this.widget.unselectedBorderColor == null
+        ? theme.primaryColorDark
+        : this.widget.unselectedBorderColor;
 
-    this.widget.icon =
-        this.widget.icon == null ? Icons.check : this.widget.icon;
+    _icon = this.widget.icon == null ? Icons.check : this.widget.icon;
   }
 
   @override
@@ -119,13 +134,13 @@ class _SelectableContainerState extends State<SelectableContainer> {
                     decoration: BoxDecoration(
                         border: Border.all(
                             color: _selected
-                                ? widget.selectedBorderColor
-                                : widget.unselectedBorderColor,
+                                ? _selectedBorderColor
+                                : _unselectedBorderColor,
                             width: widget.borderSize.toDouble()),
                         borderRadius: BorderRadius.circular(10),
                         color: _selected
-                            ? widget.selectedBackgroundColor
-                            : widget.unselectedBackgroundColor),
+                            ? _selectedBackgroundColor
+                            : _unselectedBackgroundColor),
                   ),
                   Visibility(
                     visible: _selected,
@@ -134,10 +149,12 @@ class _SelectableContainerState extends State<SelectableContainer> {
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         shape: BoxShape.circle,
-                        color: widget.selectedBorderColor,
+                        color: _selected
+                            ? _selectedBorderColor
+                            : _unselectedBorderColor,
                       ),
                       child: Icon(
-                        widget.icon,
+                        _icon,
                         size: widget.iconSize.toDouble(),
                         color: widget.iconColor,
                       ),
