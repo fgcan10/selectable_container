@@ -3,7 +3,7 @@
 A Selectable Container for Flutter. Easy to implement and customize.
 
 ## Demo
-![Demo: ](selectableContainer.gif)
+![Demo: ](https://github.com/fgcan10/selectable_container/raw/master/selectableContainer.gif)
 
 ## Usage
 To use plugin, just import package `import 'package:selectable_container/selectable_container.dart';`
