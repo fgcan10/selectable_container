@@ -5,19 +5,46 @@ import 'package:flutter/material.dart';
 /// Box that can be tapped.
 /// When selected a check Icon appears
 class SelectableContainer extends StatefulWidget {
+  /// Default dialogBackgroundColor
   Color selectedBackgroundColor;
+
+  /// Default dialogBackgroundColor
   Color unselectedBackgroundColor;
+
+  /// Default primaryColor
   Color selectedBorderColor;
+
+  /// Default primaryColorDark
   Color unselectedBorderColor;
+
+  /// Default white color
   Color iconColor;
+
+  /// Default 16
   int iconSize;
+
+  /// Content
   Widget child;
+
+  /// Default 2 pixels
   int borderSize;
+
+  /// Callback when  container get tapped
   Function onPressed;
+
+  /// Default 0.5
   double unselectedOpacity;
+
+  /// In milliseconds. Default 600
   int opacityAnimationDuration;
+
+  /// Default Icons.check
   IconData icon;
+
+  /// Default Alignment.topRight
   Alignment iconAlignment;
+
+  /// Default no padding
   double padding;
 
   @override
