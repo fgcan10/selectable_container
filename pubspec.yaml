@@ -1,8 +1,8 @@
 name: selectable_container
-description: A new Flutter package.
+description: Selectable container for Flutter.
 version: 0.0.1
-author:
-homepage:
+author: Fernando Paredes Quesada<fgcan10@gmail.com>
+homepage: https://github.com/fgcan10/selectable_container
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

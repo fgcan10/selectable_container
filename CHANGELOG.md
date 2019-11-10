@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 2019-11-10
 
-* TODO: Describe initial release.
+* A selectable container for Flutter. Easy to implement and customize.
