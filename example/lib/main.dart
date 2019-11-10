@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: buildTextContentOfContainer(
                 'Selectable Container', 'Default theme colors', textStyles),
             onPressed: () {},
+            padding: 8.0,
           ),
           SizedBox(
             height: 16.0,
@@ -49,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icons.thumb_up,
             iconSize: 24,
             unselectedOpacity: 0.5,
+            padding: 8.0,
             child: buildTextContentOfContainer('Custom color',
                 'Icon, size, position en opacitiy changed', textStyles),
             onPressed: () {},
@@ -63,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
             unselectedOpacity: 0.3,
             opacityAnimationDuration: 300,
             child: buildDemoContent3(),
+            padding: 16.0,
             onPressed: () {},
           )
         ],
@@ -70,53 +73,47 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Padding buildTextContentOfContainer(
+  Widget buildTextContentOfContainer(
       String title, String subtitle, TextTheme textStyles) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            title,
-            style: textStyles.display1,
-          ),
-          Text(
-            subtitle,
-            style: textStyles.body1,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          title,
+          style: textStyles.display1,
+        ),
+        Text(
+          subtitle,
+          style: textStyles.body1,
+        ),
+      ],
     );
   }
 
   Widget buildDemoContent3() {
-    return Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage('images/flutter.png'),
-                radius: 25.0,
-              ),
-              SizedBox(
-                width: 8.0,
-              ),
-              Text(
-                'Develop with Flutter',
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20.0,
-                    color: Colors.blue.shade700),
-              ),
-            ],
-          )
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            CircleAvatar(
+              backgroundImage: AssetImage('images/flutter.png'),
+              radius: 25.0,
+            ),
+            SizedBox(
+              width: 8.0,
+            ),
+            Text(
+              'Develop with Flutter',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20.0,
+                  color: Colors.blue.shade700),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

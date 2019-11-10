@@ -18,6 +18,7 @@ class SelectableContainer extends StatefulWidget {
   int opacityAnimationDuration;
   IconData icon;
   Alignment iconAlignment;
+  double padding;
 
   @override
   _SelectableContainerState createState() => _SelectableContainerState();
@@ -35,6 +36,7 @@ class SelectableContainer extends StatefulWidget {
       this.borderSize = 2,
       this.unselectedOpacity = 0.5,
       this.opacityAnimationDuration = 600,
+      this.padding = 0,
       this.child});
 }
 
@@ -85,6 +87,7 @@ class _SelectableContainerState extends State<SelectableContainer> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.all(widget.iconSize / 2),
+                    padding: EdgeInsets.all(widget.padding),
                     child: widget.child,
                     decoration: BoxDecoration(
                         border: Border.all(
