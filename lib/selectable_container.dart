@@ -60,6 +60,13 @@ class SelectableContainer extends StatefulWidget {
   /// Default value : 0.0
   final double padding;
 
+  /// Elevation
+  /// Default value : 0.0
+  final double elevation;
+
+  // Default value : 10.0
+  final double borderRadius;
+
   @override
   _SelectableContainerState createState() => _SelectableContainerState();
 
@@ -77,6 +84,8 @@ class SelectableContainer extends StatefulWidget {
       this.unselectedOpacity = 0.5,
       this.opacityAnimationDuration = 600,
       this.padding = 0,
+      this.elevation = 0.0,
+      this.borderRadius = 10.0,
       this.child});
 }
 
@@ -123,8 +132,8 @@ class _SelectableContainerState extends State<SelectableContainer> {
           child: Column(
             children: [
               Material(
-                borderRadius: BorderRadius.circular(20.0),
-                elevation: 4.0,
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+                elevation: widget.elevation,
                 child: Stack(
                   alignment: widget.iconAlignment,
                   children: <Widget>[
@@ -138,7 +147,8 @@ class _SelectableContainerState extends State<SelectableContainer> {
                                   ? _selectedBorderColor
                                   : _unselectedBorderColor,
                               width: widget.borderSize.toDouble()),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius:
+                              BorderRadius.circular(widget.borderRadius),
                           color: _selected
                               ? _selectedBackgroundColor
                               : _unselectedBackgroundColor),
