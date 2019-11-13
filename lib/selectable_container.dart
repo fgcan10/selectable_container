@@ -92,20 +92,17 @@ class _SelectableContainerState extends State<SelectableContainer> {
   void assingDefaultValues() {
     var theme = Theme.of(context);
 
-    _selectedBackgroundColor = this.widget.selectedBackgroundColor == null
-        ? theme.dialogBackgroundColor
-        : this.widget.selectedBackgroundColor;
-    _unselectedBackgroundColor = this.widget.unselectedBackgroundColor == null
-        ? theme.dialogBackgroundColor
-        : this.widget.unselectedBackgroundColor;
-    _selectedBorderColor = this.widget.selectedBorderColor == null
-        ? theme.primaryColor
-        : this.widget.selectedBorderColor;
-    _unselectedBorderColor = this.widget.unselectedBorderColor == null
-        ? theme.primaryColorDark
-        : this.widget.unselectedBorderColor;
+    _selectedBackgroundColor =
+        this.widget.selectedBackgroundColor ?? theme.dialogBackgroundColor;
+    _unselectedBackgroundColor =
+        this.widget.unselectedBackgroundColor ?? theme.dialogBackgroundColor;
+    _selectedBorderColor =
+        this.widget.selectedBorderColor ?? theme.primaryColor;
 
-    _icon = this.widget.icon == null ? Icons.check : this.widget.icon;
+    _unselectedBorderColor =
+        this.widget.unselectedBorderColor ?? theme.primaryColorDark;
+
+    _icon = this.widget.icon ?? Icons.check;
   }
 
   @override
@@ -121,46 +118,51 @@ class _SelectableContainerState extends State<SelectableContainer> {
       child: AnimatedOpacity(
         opacity: _selected ? 1.0 : widget.unselectedOpacity,
         duration: Duration(milliseconds: widget.opacityAnimationDuration),
-        child: Container(
+        child: Material(
+          elevation: 0.0,
           child: Column(
             children: [
-              Stack(
-                alignment: widget.iconAlignment,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(widget.iconSize / 2),
-                    padding: EdgeInsets.all(widget.padding),
-                    child: widget.child,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: _selected
-                                ? _selectedBorderColor
-                                : _unselectedBorderColor,
-                            width: widget.borderSize.toDouble()),
-                        borderRadius: BorderRadius.circular(10),
-                        color: _selected
-                            ? _selectedBackgroundColor
-                            : _unselectedBackgroundColor),
-                  ),
-                  Visibility(
-                    visible: _selected,
-                    child: Container(
-                      padding: EdgeInsets.all(4),
+              Material(
+                borderRadius: BorderRadius.circular(20.0),
+                elevation: 4.0,
+                child: Stack(
+                  alignment: widget.iconAlignment,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(widget.iconSize / 2),
+                      padding: EdgeInsets.all(widget.padding),
+                      child: widget.child,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                        shape: BoxShape.circle,
-                        color: _selected
-                            ? _selectedBorderColor
-                            : _unselectedBorderColor,
-                      ),
-                      child: Icon(
-                        _icon,
-                        size: widget.iconSize.toDouble(),
-                        color: widget.iconColor,
+                          border: Border.all(
+                              color: _selected
+                                  ? _selectedBorderColor
+                                  : _unselectedBorderColor,
+                              width: widget.borderSize.toDouble()),
+                          borderRadius: BorderRadius.circular(10),
+                          color: _selected
+                              ? _selectedBackgroundColor
+                              : _unselectedBackgroundColor),
+                    ),
+                    Visibility(
+                      visible: _selected,
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          shape: BoxShape.circle,
+                          color: _selected
+                              ? _selectedBorderColor
+                              : _unselectedBorderColor,
+                        ),
+                        child: Icon(
+                          _icon,
+                          size: widget.iconSize.toDouble(),
+                          color: widget.iconColor,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
