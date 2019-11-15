@@ -64,7 +64,7 @@ class SelectableContainer extends StatefulWidget {
   /// Default value : 0.0
   final double elevation;
 
-  // Default value : 10.0
+  ///Default value : 10.0
   final double borderRadius;
 
   @override
