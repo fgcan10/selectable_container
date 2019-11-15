@@ -9,3 +9,7 @@
 ## [0.1.1] - 2019-11-10
 
 * All settings tested. Production version.
+
+## [0.1.2] - 2019-11-15
+
+* New setting 'elevation' and 'borderradius'

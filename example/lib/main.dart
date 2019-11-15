@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
             iconColor: Colors.yellowAccent,
             unselectedOpacity: 0.3,
             opacityAnimationDuration: 300,
+            elevation: 4.0,
             child: buildDemoContent3(),
             padding: 16.0,
             onPressed: () {},
