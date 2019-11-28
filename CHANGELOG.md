@@ -13,3 +13,7 @@
 ## [0.1.2] - 2019-11-15
 
 * New setting 'elevation' and 'borderradius'
+
+## [0.1.3] - 2019-11-28
+
+* Property selected is now public

@@ -67,11 +67,15 @@ class SelectableContainer extends StatefulWidget {
   ///Default value : 10.0
   final double borderRadius;
 
+  ///Default not selected
+  bool selected;
+
   @override
   _SelectableContainerState createState() => _SelectableContainerState();
 
   SelectableContainer(
-      {this.unselectedBackgroundColor,
+      {this.selected,
+      this.unselectedBackgroundColor,
       this.selectedBackgroundColor,
       this.selectedBorderColor,
       this.unselectedBorderColor,
@@ -90,8 +94,6 @@ class SelectableContainer extends StatefulWidget {
 }
 
 class _SelectableContainerState extends State<SelectableContainer> {
-  bool _selected = false;
-
   Color _selectedBackgroundColor;
   Color _unselectedBackgroundColor;
   Color _selectedBorderColor;
@@ -120,12 +122,12 @@ class _SelectableContainerState extends State<SelectableContainer> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          _selected = !_selected;
+          widget.selected = !widget.selected;
         });
         widget.onPressed();
       },
       child: AnimatedOpacity(
-        opacity: _selected ? 1.0 : widget.unselectedOpacity,
+        opacity: widget.selected ? 1.0 : widget.unselectedOpacity,
         duration: Duration(milliseconds: widget.opacityAnimationDuration),
         child: Material(
           elevation: 0.0,
@@ -143,24 +145,24 @@ class _SelectableContainerState extends State<SelectableContainer> {
                       child: widget.child,
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: _selected
+                              color: widget.selected
                                   ? _selectedBorderColor
                                   : _unselectedBorderColor,
                               width: widget.borderSize.toDouble()),
                           borderRadius:
                               BorderRadius.circular(widget.borderRadius),
-                          color: _selected
+                          color: widget.selected
                               ? _selectedBackgroundColor
                               : _unselectedBackgroundColor),
                     ),
                     Visibility(
-                      visible: _selected,
+                      visible: widget.selected,
                       child: Container(
                         padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),
                           shape: BoxShape.circle,
-                          color: _selected
+                          color: widget.selected
                               ? _selectedBorderColor
                               : _unselectedBorderColor,
                         ),
