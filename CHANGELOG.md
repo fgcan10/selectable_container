@@ -17,3 +17,7 @@
 ## [0.1.3] - 2019-11-28
 
 * Property selected is now public
+
+## [0.1.4] - 2020-07-20
+
+* Property selected is now public

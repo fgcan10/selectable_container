@@ -20,6 +20,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _select1 = false;
+  bool _select2 = false;
+  bool _select3 = false;
+
   @override
   Widget build(BuildContext context) {
     var textStyles = Theme.of(context).textTheme;
@@ -35,7 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
           SelectableContainer(
             child: buildTextContentOfContainer(
                 'Selectable Container', 'Default theme colors', textStyles),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _select1 = !_select1;
+              });
+            },
+            selected: _select1,
             padding: 8.0,
           ),
           SizedBox(
@@ -50,10 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icons.thumb_up,
             iconSize: 24,
             unselectedOpacity: 0.5,
+            selected: _select2,
             padding: 8.0,
             child: buildTextContentOfContainer('Custom color',
                 'Icon, size, position en opacitiy changed', textStyles),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _select2 = !_select2;
+              });
+            },
           ),
           SizedBox(
             height: 16.0,
@@ -65,9 +79,14 @@ class _MyHomePageState extends State<MyHomePage> {
             unselectedOpacity: 0.3,
             opacityAnimationDuration: 300,
             elevation: 4.0,
+            selected: _select3,
             child: buildDemoContent3(),
             padding: 16.0,
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _select3 = !_select3;
+              });
+            },
           )
         ],
       ),
