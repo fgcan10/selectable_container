@@ -68,7 +68,7 @@ class SelectableContainer extends StatefulWidget {
   final double borderRadius;
 
   ///Default not selected
-  bool selected;
+  final bool selected;
 
   @override
   _SelectableContainerState createState() => _SelectableContainerState();
@@ -99,6 +99,13 @@ class _SelectableContainerState extends State<SelectableContainer> {
   Color _selectedBorderColor;
   Color _unselectedBorderColor;
   IconData _icon;
+  bool _selected;
+
+  @override
+  void initState() {
+    super.initState();
+    _selected = widget.selected;
+  }
 
   void assingDefaultValues() {
     var theme = Theme.of(context);
@@ -122,7 +129,7 @@ class _SelectableContainerState extends State<SelectableContainer> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          widget.selected = !widget.selected;
+          _selected = !_selected;
         });
         widget.onPressed();
       },
