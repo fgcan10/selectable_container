@@ -5,7 +5,7 @@ author: Fernando Paredes Quesada<fgcan10@gmail.com>
 homepage: https://github.com/fgcan10/selectable_container
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -15,12 +15,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter:
-
   # To add assets to your package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
   #
-

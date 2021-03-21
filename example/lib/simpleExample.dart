@@ -7,6 +7,8 @@ class SimpleExamplePage extends StatefulWidget {
 }
 
 class _SimpleExamplePageState extends State<SimpleExamplePage> {
+  bool _selected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,12 @@ class _SimpleExamplePageState extends State<SimpleExamplePage> {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           SelectableContainer(
-            onPressed: () {},
+            selected: _selected,
+            onValueChanged: (newValue) {
+              setState(() {
+                _selected = newValue;
+              });
+            },
             child: Text('Tap me'),
             padding: 16.0,
           ),

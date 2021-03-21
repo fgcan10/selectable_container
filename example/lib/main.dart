@@ -34,14 +34,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SelectableContainer(
             child: buildTextContentOfContainer(
                 'Selectable Container', 'Default theme colors', textStyles),
-            onPressed: () {
+            onValueChanged: (newValue) {
               setState(() {
-                _select1 = !_select1;
+                _select1 = newValue;
               });
             },
             selected: _select1,
@@ -63,9 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: 8.0,
             child: buildTextContentOfContainer('Custom color',
                 'Icon, size, position en opacitiy changed', textStyles),
-            onPressed: () {
+            onValueChanged: (newValue) {
               setState(() {
-                _select2 = !_select2;
+                _select2 = newValue;
               });
             },
           ),
@@ -82,9 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
             selected: _select3,
             child: buildDemoContent3(),
             padding: 16.0,
-            onPressed: () {
+            onValueChanged: (newValue) {
               setState(() {
-                _select3 = !_select3;
+                _select3 = newValue;
               });
             },
           )

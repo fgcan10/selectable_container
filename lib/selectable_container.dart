@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// Box that can be tapped.
 /// When selected a check Icon appears
-class SelectableContainer extends StatefulWidget {
+class SelectableContainer extends StatelessWidget {
   /// Background color when container is selected.
   /// Default value : dialogBackgroundColor
   final Color selectedBackgroundColor;
@@ -39,6 +39,9 @@ class SelectableContainer extends StatefulWidget {
   /// Callback when container get tapped
   final Function onPressed;
 
+  /// Callback of type ValueChanged
+  final ValueChanged<bool> onValueChanged;
+
   /// Opacity when container is not selected.
   /// When not 1 it will be animated when tapped.
   /// Default value : 0.5
@@ -70,16 +73,14 @@ class SelectableContainer extends StatefulWidget {
   ///Default not selected
   final bool selected;
 
-  @override
-  _SelectableContainerState createState() => _SelectableContainerState();
-
   SelectableContainer(
-      {this.selected,
+      {@required this.selected,
       this.unselectedBackgroundColor,
       this.selectedBackgroundColor,
       this.selectedBorderColor,
       this.unselectedBorderColor,
-      @required this.onPressed,
+      @Deprecated('Use onValueChanged') this.onPressed,
+      @required this.onValueChanged,
       this.iconSize = 16,
       this.iconColor = Colors.white,
       this.icon,
@@ -90,100 +91,65 @@ class SelectableContainer extends StatefulWidget {
       this.padding = 0,
       this.elevation = 0.0,
       this.borderRadius = 10.0,
-      this.child});
-}
-
-class _SelectableContainerState extends State<SelectableContainer> {
-  Color _selectedBackgroundColor;
-  Color _unselectedBackgroundColor;
-  Color _selectedBorderColor;
-  Color _unselectedBorderColor;
-  IconData _icon;
-  bool _selected;
-
-  @override
-  void initState() {
-    super.initState();
-    _selected = widget.selected;
-  }
-
-  void assingDefaultValues() {
-    var theme = Theme.of(context);
-
-    _selectedBackgroundColor =
-        this.widget.selectedBackgroundColor ?? theme.dialogBackgroundColor;
-    _unselectedBackgroundColor =
-        this.widget.unselectedBackgroundColor ?? theme.dialogBackgroundColor;
-    _selectedBorderColor =
-        this.widget.selectedBorderColor ?? theme.primaryColor;
-
-    _unselectedBorderColor =
-        this.widget.unselectedBorderColor ?? theme.primaryColorDark;
-
-    _icon = this.widget.icon ?? Icons.check;
-  }
+      this.child})
+      : assert(selected != null),
+        assert(onValueChanged != null);
 
   @override
   Widget build(BuildContext context) {
-    assingDefaultValues();
+    var theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _selected = !_selected;
-        });
-        widget.onPressed();
+        onValueChanged(!selected);
       },
       child: AnimatedOpacity(
-        opacity: widget.selected ? 1.0 : widget.unselectedOpacity,
-        duration: Duration(milliseconds: widget.opacityAnimationDuration),
+        opacity: selected ? 1.0 : unselectedOpacity,
+        duration: Duration(milliseconds: opacityAnimationDuration),
         child: Material(
           elevation: 0.0,
-          child: Column(
-            children: [
-              Material(
-                borderRadius: BorderRadius.circular(widget.borderRadius),
-                elevation: widget.elevation,
-                child: Stack(
-                  alignment: widget.iconAlignment,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.all(widget.iconSize / 2),
-                      padding: EdgeInsets.all(widget.padding),
-                      child: widget.child,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: widget.selected
-                                  ? _selectedBorderColor
-                                  : _unselectedBorderColor,
-                              width: widget.borderSize.toDouble()),
-                          borderRadius:
-                              BorderRadius.circular(widget.borderRadius),
-                          color: widget.selected
-                              ? _selectedBackgroundColor
-                              : _unselectedBackgroundColor),
-                    ),
-                    Visibility(
-                      visible: widget.selected,
-                      child: Container(
-                        padding: EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          shape: BoxShape.circle,
-                          color: widget.selected
-                              ? _selectedBorderColor
-                              : _unselectedBorderColor,
-                        ),
-                        child: Icon(
-                          _icon,
-                          size: widget.iconSize.toDouble(),
-                          color: widget.iconColor,
-                        ),
-                      ),
-                    ),
-                  ],
+          child: Material(
+            borderRadius: BorderRadius.circular(borderRadius),
+            elevation: elevation,
+            child: Stack(
+              alignment: iconAlignment,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(iconSize / 2),
+                  padding: EdgeInsets.all(padding),
+                  child: child,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: selected
+                              ? selectedBorderColor ?? theme.primaryColor
+                              : unselectedBorderColor ?? theme.primaryColorDark,
+                          width: borderSize.toDouble()),
+                      borderRadius: BorderRadius.circular(borderRadius),
+                      color: selected
+                          ? selectedBackgroundColor ??
+                              theme.dialogBackgroundColor
+                          : unselectedBackgroundColor ??
+                              theme.dialogBackgroundColor),
                 ),
-              ),
-            ],
+                Visibility(
+                  visible: selected,
+                  child: Container(
+                    padding: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      shape: BoxShape.circle,
+                      color: selected
+                          ? selectedBorderColor ?? theme.primaryColor
+                          : unselectedBorderColor ?? theme.primaryColorDark,
+                    ),
+                    child: Icon(
+                      icon ?? Icons.check,
+                      size: iconSize.toDouble(),
+                      color: iconColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
