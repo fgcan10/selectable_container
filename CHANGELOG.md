@@ -25,4 +25,5 @@
 ## [0.1.5] - 2021-03-21
 
 * onPressed Deprecated. onValueChanged added.
+* Widget is now stateless.
 
