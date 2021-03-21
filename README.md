@@ -34,7 +34,12 @@ Check de example directory to access the project that implements the image shown
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               SelectableContainer(
-                onPressed: () {},
+                selected: _selected
+                onValueChanged: (newValue) {
+                   setState(() {
+                    _selected = newValue;
+                  });
+                },
                 child: Text('Tap me'),
                 padding: 16.0,
               ),

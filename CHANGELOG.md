@@ -21,3 +21,8 @@
 ## [0.1.4] - 2020-07-20
 
 * Property selected is now public
+
+## [0.1.5] - 2021-03-21
+
+* onPressed Deprecated. onValueChanged added.
+
