@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 /// Box that can be tapped.
 /// When selected a check Icon appears
 class SelectableContainer extends StatelessWidget {
+  /// Background color for the space between the child and the
+  /// Defaul value: scaffoldBackgroundColor
+  final Color marginColor;
+
   /// Background color when container is selected.
   /// Default value : dialogBackgroundColor
   final Color selectedBackgroundColor;
@@ -47,6 +51,11 @@ class SelectableContainer extends StatelessWidget {
   /// Default value : 0.5
   final double unselectedOpacity;
 
+  /// Opacity when container is selected.
+  /// When not 1 it will be animated when tapped.
+  /// Default value : 1
+  final double selectedOpacity;
+
   /// Opacity animation duration in milliseconds.
   /// Default value : 600
   final int opacityAnimationDuration;
@@ -54,6 +63,10 @@ class SelectableContainer extends StatelessWidget {
   /// Icon to be shown when selected.
   /// Default value : Icons.check
   final IconData icon;
+
+  /// Icon to be shown when unselected.
+  /// Default value : geen
+  final IconData unselectedIcon;
 
   /// Icon position.
   /// Default value : Alignment.topRight
@@ -75,6 +88,7 @@ class SelectableContainer extends StatelessWidget {
 
   SelectableContainer(
       {@required this.selected,
+      this.marginColor,
       this.unselectedBackgroundColor,
       this.selectedBackgroundColor,
       this.selectedBorderColor,
@@ -84,8 +98,10 @@ class SelectableContainer extends StatelessWidget {
       this.iconSize = 16,
       this.iconColor = Colors.white,
       this.icon,
+      this.unselectedIcon,
       this.iconAlignment = Alignment.topRight,
       this.borderSize = 2,
+      this.selectedOpacity = 1.0,
       this.unselectedOpacity = 0.5,
       this.opacityAnimationDuration = 600,
       this.padding = 0,
@@ -103,13 +119,14 @@ class SelectableContainer extends StatelessWidget {
         onValueChanged(!selected);
       },
       child: AnimatedOpacity(
-        opacity: selected ? 1.0 : unselectedOpacity,
+        opacity: selected ? selectedOpacity : unselectedOpacity,
         duration: Duration(milliseconds: opacityAnimationDuration),
         child: Material(
           elevation: 0.0,
           child: Material(
             borderRadius: BorderRadius.circular(borderRadius),
             elevation: elevation,
+            color: marginColor ?? theme.scaffoldBackgroundColor,
             child: Stack(
               alignment: iconAlignment,
               children: <Widget>[
@@ -131,16 +148,28 @@ class SelectableContainer extends StatelessWidget {
                               theme.dialogBackgroundColor),
                 ),
                 Visibility(
+                    visible: !selected && unselectedIcon != null,
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          shape: BoxShape.circle,
+                          color:
+                              unselectedBorderColor ?? theme.primaryColorDark),
+                      child: Icon(
+                        unselectedIcon,
+                        size: iconSize.toDouble(),
+                        color: iconColor,
+                      ),
+                    )),
+                Visibility(
                   visible: selected,
                   child: Container(
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      shape: BoxShape.circle,
-                      color: selected
-                          ? selectedBorderColor ?? theme.primaryColor
-                          : unselectedBorderColor ?? theme.primaryColorDark,
-                    ),
+                        border: Border.all(color: Colors.white),
+                        shape: BoxShape.circle,
+                        color: selectedBorderColor ?? theme.primaryColor),
                     child: Icon(
                       icon ?? Icons.check,
                       size: iconSize.toDouble(),
