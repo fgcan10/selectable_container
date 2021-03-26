@@ -27,3 +27,6 @@
 * onPressed Deprecated. onValueChanged added.
 * Widget is now stateless.
 
+## [0.1.6] - 2021-03-25
+
+* Display a different icon when unselected
