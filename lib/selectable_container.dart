@@ -7,23 +7,23 @@ import 'package:flutter/material.dart';
 class SelectableContainer extends StatelessWidget {
   /// Background color for the space between the child and the
   /// Defaul value: scaffoldBackgroundColor
-  final Color marginColor;
+  final Color? marginColor;
 
   /// Background color when container is selected.
   /// Default value : dialogBackgroundColor
-  final Color selectedBackgroundColor;
+  final Color? selectedBackgroundColor;
 
   /// Background color when container is not selected.
   /// Default value : dialogBackgroundColor
-  final Color unselectedBackgroundColor;
+  final Color? unselectedBackgroundColor;
 
   /// Border color when container is selected.
   /// Default value : primaryColor
-  final Color selectedBorderColor;
+  final Color? selectedBorderColor;
 
   /// Border color when container is not selected.
   /// Default value :primaryColorDark
-  final Color unselectedBorderColor;
+  final Color? unselectedBorderColor;
 
   /// Icon's color
   /// Default value : white
@@ -34,14 +34,14 @@ class SelectableContainer extends StatelessWidget {
   final int iconSize;
 
   /// The child to render inside the container
-  final Widget child;
+  final Widget? child;
 
   /// Border size
   /// Default value : 2 pixels
   final int borderSize;
 
   /// Callback when container get tapped
-  final Function onPressed;
+  final Function? onPressed;
 
   /// Callback of type ValueChanged
   final ValueChanged<bool> onValueChanged;
@@ -66,7 +66,7 @@ class SelectableContainer extends StatelessWidget {
 
   /// Icon to be shown when unselected.
   /// Default value : geen
-  final IconData unselectedIcon;
+  final IconData? unselectedIcon;
 
   /// Icon position.
   /// Default value : Alignment.topRight
@@ -87,17 +87,17 @@ class SelectableContainer extends StatelessWidget {
   final bool selected;
 
   SelectableContainer(
-      {@required this.selected,
+      {required this.selected,
       this.marginColor,
       this.unselectedBackgroundColor,
       this.selectedBackgroundColor,
       this.selectedBorderColor,
       this.unselectedBorderColor,
       @Deprecated('Use onValueChanged') this.onPressed,
-      @required this.onValueChanged,
+      required this.onValueChanged,
       this.iconSize = 16,
       this.iconColor = Colors.white,
-      this.icon,
+      this.icon = Icons.check,
       this.unselectedIcon,
       this.iconAlignment = Alignment.topRight,
       this.borderSize = 2,
@@ -107,9 +107,7 @@ class SelectableContainer extends StatelessWidget {
       this.padding = 0,
       this.elevation = 0.0,
       this.borderRadius = 10.0,
-      this.child})
-      : assert(selected != null),
-        assert(onValueChanged != null);
+      required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +169,7 @@ class SelectableContainer extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: selectedBorderColor ?? theme.primaryColor),
                     child: Icon(
-                      icon ?? Icons.check,
+                      icon,
                       size: iconSize.toDouble(),
                       color: iconColor,
                     ),
