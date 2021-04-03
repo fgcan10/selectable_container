@@ -103,11 +103,11 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         Text(
           title,
-          style: textStyles.display1,
+          style: textStyles.headline5,
         ),
         Text(
           subtitle,
-          style: textStyles.body1,
+          style: textStyles.bodyText1,
         ),
       ],
     );

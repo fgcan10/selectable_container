@@ -30,3 +30,7 @@
 ## [0.1.6] - 2021-03-25
 
 * Display a different icon when unselected
+
+## [1.0.1] - 2021-04-03
+
+* Null-safety
