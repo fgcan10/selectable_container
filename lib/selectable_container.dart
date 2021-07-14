@@ -122,13 +122,13 @@ class SelectableContainer extends StatelessWidget {
         child: Material(
           elevation: 0.0,
           child: Material(
-            borderRadius: BorderRadius.circular(borderRadius),
             elevation: elevation,
             color: marginColor ?? theme.scaffoldBackgroundColor,
             child: Stack(
               alignment: iconAlignment,
               children: <Widget>[
                 Container(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
                   margin: EdgeInsets.all(iconSize / 2),
                   padding: EdgeInsets.all(padding),
                   child: child,

@@ -1,3 +1,4 @@
+import 'package:example/selectable_container_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:selectable_container/selectable_container.dart';
 
@@ -33,23 +34,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Selectable Container Example'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SelectableContainer(
-            child: buildTextContentOfContainer(
-                'Selectable Container', 'Default theme colors', textStyles),
-            onValueChanged: (newValue) {
-              setState(() {
-                _select1 = newValue;
-              });
-            },
-            selected: _select1,
-            padding: 8.0,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SelectableContainer(
+              child: buildTextContentOfContainer(
+                  'Selectable Container', 'Default theme colors', textStyles),
+              onValueChanged: (newValue) {
+                setState(() {
+                  _select1 = newValue;
+                });
+              },
+              selected: _select1,
+              padding: 8.0,
+            ),
           ),
-          SizedBox(
-            height: 16.0,
-          ),
+          const SizedBox(height: 16.0),
           SelectableContainer(
             selectedBorderColor: Colors.teal.shade700,
             selectedBackgroundColor: Colors.grey.shade100,
@@ -71,9 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
           ),
-          SizedBox(
-            height: 16.0,
-          ),
+          const SizedBox(height: 16.0),
           SelectableContainer(
             iconSize: 20,
             icon: Icons.star,
@@ -89,7 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 _select3 = newValue;
               });
             },
-          )
+          ),
+          const SizedBox(height: 16.0),
+          Expanded(child: SelectableContainerGrid()),
         ],
       ),
     );

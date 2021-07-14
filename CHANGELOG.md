@@ -34,3 +34,7 @@
 ## [1.0.1] - 2021-04-03
 
 * Null-safety
+
+## [1.0.2] - 2021-07-14
+
+* Select/unselect icon
