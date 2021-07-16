@@ -51,11 +51,18 @@ class _SelectableContainerGridState extends State<SelectableContainerGrid> {
         icon: Icons.check_box,
         iconAlignment: Alignment.topRight,
         iconSize: 24,
-        iconColor: Colors.green[400]!,
+        iconColor: Colors.deepOrange[400]!,
         onValueChanged: (_) {
           _valueSelected(i);
         },
-        child: SizedBox(height: 100, width: 100),
+        child: SizedBox(
+          height: 100,
+          width: 100,
+          child: Image.asset(
+            'images/dog$i.jpg',
+            fit: BoxFit.fitWidth,
+          ),
+        ),
       ));
     }
     return ret;
