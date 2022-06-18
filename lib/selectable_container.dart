@@ -86,9 +86,16 @@ class SelectableContainer extends StatelessWidget {
   ///Default not selected
   final bool selected;
 
+  // Top marging. Default value : 0.0
   final double topMargin;
+
+  // Bottom marging. Default value : 0.0
   final double bottomMargin;
+
+  // Left marging. Default value : 0.0
   final double leftMargin;
+
+  // Right marging. Default value : 0.0
   final double rightMargin;
 
   SelectableContainer(
