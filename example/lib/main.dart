@@ -1,4 +1,4 @@
-import 'package:example/selectable_container_grid.dart';
+import 'package:example2/selectable_container_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:selectable_container/selectable_container.dart';
 
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Selectable Container Example',
       home: MyHomePage(),
     );
@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -31,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Selectable Container Example'),
+        title: const Text('Selectable Container Example'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -39,8 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: SelectableContainer(
-              child: buildTextContentOfContainer(
-                  'Selectable Container', 'Default theme colors', textStyles),
               onValueChanged: (newValue) {
                 setState(() {
                   _select1 = newValue;
@@ -48,6 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               selected: _select1,
               padding: 8.0,
+              child: buildTextContentOfContainer(
+                  'Selectable Container', 'Default theme colors', textStyles),
             ),
           ),
           const SizedBox(height: 16.0),
@@ -81,16 +83,16 @@ class _MyHomePageState extends State<MyHomePage> {
             opacityAnimationDuration: 300,
             elevation: 4.0,
             selected: _select3,
-            child: buildDemoContent3(),
             padding: 16.0,
             onValueChanged: (newValue) {
               setState(() {
                 _select3 = newValue;
               });
             },
+            child: buildDemoContent3(),
           ),
           const SizedBox(height: 16.0),
-          Expanded(child: SelectableContainerGrid()),
+          const Expanded(child: SelectableContainerGrid()),
         ],
       ),
     );
@@ -120,11 +122,11 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            CircleAvatar(
+            const CircleAvatar(
               backgroundImage: AssetImage('images/flutter.png'),
               radius: 25.0,
             ),
-            SizedBox(
+            const SizedBox(
               width: 8.0,
             ),
             Text(

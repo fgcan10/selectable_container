@@ -38,3 +38,7 @@
 ## [1.0.2] - 2021-07-14
 
 * Select/unselect icon
+
+## [1.0.3] - 2022-06-18
+
+* Top, botton, left and right margin
