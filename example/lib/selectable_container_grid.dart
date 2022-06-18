@@ -14,6 +14,7 @@ class SelectableContainerGrid extends StatefulWidget {
   const SelectableContainerGrid({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SelectableContainerGridState createState() =>
       _SelectableContainerGridState();
 }
@@ -24,9 +25,9 @@ class _SelectableContainerGridState extends State<SelectableContainerGrid> {
   @override
   void initState() {
     super.initState();
-    kGridElements.forEach((element) {
+    for (var element in kGridElements) {
       _selectedItems.add(false);
-    });
+    }
   }
 
   @override
@@ -55,6 +56,10 @@ class _SelectableContainerGridState extends State<SelectableContainerGrid> {
         onValueChanged: (_) {
           _valueSelected(i);
         },
+        topMargin: 5.0,
+        leftMargin: 10.0,
+        rightMargin: 10.0,
+        bottomMargin: 10.0,
         child: SizedBox(
           height: 100,
           width: 100,

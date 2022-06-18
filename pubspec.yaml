@@ -1,7 +1,6 @@
 name: selectable_container
 description: Selectable container for Flutter. The container shows an icon on one of the corner when tapped.
-version: 1.0.2
-author: Fernando Paredes Quesada<fgcan10@gmail.com>
+version: 1.0.3
 homepage: https://github.com/fgcan10/selectable_container
 
 environment:

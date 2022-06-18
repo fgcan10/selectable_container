@@ -86,6 +86,11 @@ class SelectableContainer extends StatelessWidget {
   ///Default not selected
   final bool selected;
 
+  final double topMargin;
+  final double bottomMargin;
+  final double leftMargin;
+  final double rightMargin;
+
   SelectableContainer(
       {required this.selected,
       this.marginColor,
@@ -107,6 +112,10 @@ class SelectableContainer extends StatelessWidget {
       this.padding = 0,
       this.elevation = 0.0,
       this.borderRadius = 10.0,
+      this.topMargin = 0.0,
+      this.bottomMargin = 0.0,
+      this.leftMargin = 0.0,
+      this.rightMargin = 0.0,
       required this.child});
 
   @override
@@ -124,58 +133,63 @@ class SelectableContainer extends StatelessWidget {
           child: Material(
             elevation: elevation,
             color: marginColor ?? theme.scaffoldBackgroundColor,
-            child: Stack(
-              alignment: iconAlignment,
-              children: <Widget>[
-                Container(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  margin: EdgeInsets.all(iconSize / 2),
-                  padding: EdgeInsets.all(padding),
-                  child: child,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: selected
-                              ? selectedBorderColor ?? theme.primaryColor
-                              : unselectedBorderColor ?? theme.primaryColorDark,
-                          width: borderSize.toDouble()),
-                      borderRadius: BorderRadius.circular(borderRadius),
-                      color: selected
-                          ? selectedBackgroundColor ??
-                              theme.dialogBackgroundColor
-                          : unselectedBackgroundColor ??
-                              theme.dialogBackgroundColor),
-                ),
-                Visibility(
-                    visible: !selected && unselectedIcon != null,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  leftMargin, topMargin, rightMargin, bottomMargin),
+              child: Stack(
+                alignment: iconAlignment,
+                children: <Widget>[
+                  Container(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    margin: EdgeInsets.all(iconSize / 2),
+                    padding: EdgeInsets.all(padding),
+                    child: child,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: selected
+                                ? selectedBorderColor ?? theme.primaryColor
+                                : unselectedBorderColor ??
+                                    theme.primaryColorDark,
+                            width: borderSize.toDouble()),
+                        borderRadius: BorderRadius.circular(borderRadius),
+                        color: selected
+                            ? selectedBackgroundColor ??
+                                theme.dialogBackgroundColor
+                            : unselectedBackgroundColor ??
+                                theme.dialogBackgroundColor),
+                  ),
+                  Visibility(
+                      visible: !selected && unselectedIcon != null,
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white),
+                            shape: BoxShape.circle,
+                            color: unselectedBorderColor ??
+                                theme.primaryColorDark),
+                        child: Icon(
+                          unselectedIcon,
+                          size: iconSize.toDouble(),
+                          color: iconColor,
+                        ),
+                      )),
+                  Visibility(
+                    visible: selected,
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),
                           shape: BoxShape.circle,
-                          color:
-                              unselectedBorderColor ?? theme.primaryColorDark),
+                          color: selectedBorderColor ?? theme.primaryColor),
                       child: Icon(
-                        unselectedIcon,
+                        icon,
                         size: iconSize.toDouble(),
                         color: iconColor,
                       ),
-                    )),
-                Visibility(
-                  visible: selected,
-                  child: Container(
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                        shape: BoxShape.circle,
-                        color: selectedBorderColor ?? theme.primaryColor),
-                    child: Icon(
-                      icon,
-                      size: iconSize.toDouble(),
-                      color: iconColor,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
