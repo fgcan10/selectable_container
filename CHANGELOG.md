@@ -46,3 +46,7 @@
 ## [1.0.4] - 2022-07-02
 
 * New properties : selectedBackgroundColorIcon, unselectedBackgroundColorIcon selectedBorderColorIcon and unselectedBorderColorIcon
+
+## [1.0.5] - 2022-07-02
+
+* New properties : topIconPosition, bottomIconPosition, leftIconPosition, rightIconPosition
