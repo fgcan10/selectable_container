@@ -42,3 +42,7 @@
 ## [1.0.3] - 2022-06-18
 
 * Top, botton, left and right margin
+
+## [1.0.4] - 2022-07-02
+
+* New properties : selectedBackgroundColorIcon, unselectedBackgroundColorIcon selectedBorderColorIcon and unselectedBorderColorIcon

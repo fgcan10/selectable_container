@@ -17,6 +17,14 @@ class SelectableContainer extends StatelessWidget {
   /// Default value : dialogBackgroundColor
   final Color? unselectedBackgroundColor;
 
+  /// Background color of the icon when container is selected.
+  /// Default value : theme.primaryColor
+  final Color? selectedBackgroundColorIcon;
+
+  /// Background color of the icon when container is not selected.
+  /// Default value : theme.primaryColorDark
+  final Color? unselectedBackgroundColorIcon;
+
   /// Border color when container is selected.
   /// Default value : primaryColor
   final Color? selectedBorderColor;
@@ -24,6 +32,14 @@ class SelectableContainer extends StatelessWidget {
   /// Border color when container is not selected.
   /// Default value :primaryColorDark
   final Color? unselectedBorderColor;
+
+  /// Border color of the icon when container is selected.
+  /// Default value : Colors.white
+  final Color? selectedBorderColorIcon;
+
+  /// Border color of the icon when container is not selected.
+  /// Default value : Colors.white
+  final Color? unselectedBorderColorIcon;
 
   /// Icon's color
   /// Default value : white
@@ -103,8 +119,12 @@ class SelectableContainer extends StatelessWidget {
       this.marginColor,
       this.unselectedBackgroundColor,
       this.selectedBackgroundColor,
+      this.unselectedBackgroundColorIcon,
+      this.selectedBackgroundColorIcon,
       this.selectedBorderColor,
       this.unselectedBorderColor,
+      this.selectedBorderColorIcon,
+      this.unselectedBorderColorIcon,
       @Deprecated('Use onValueChanged') this.onPressed,
       required this.onValueChanged,
       this.iconSize = 16,
@@ -170,9 +190,11 @@ class SelectableContainer extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
+                            border: Border.all(
+                                color:
+                                    unselectedBorderColorIcon ?? Colors.white),
                             shape: BoxShape.circle,
-                            color: unselectedBorderColor ??
+                            color: unselectedBackgroundColorIcon ??
                                 theme.primaryColorDark),
                         child: Icon(
                           unselectedIcon,
@@ -185,9 +207,11 @@ class SelectableContainer extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
+                          border: Border.all(
+                              color: selectedBorderColorIcon ?? Colors.white),
                           shape: BoxShape.circle,
-                          color: selectedBorderColor ?? theme.primaryColor),
+                          color: selectedBackgroundColorIcon ??
+                              theme.primaryColor),
                       child: Icon(
                         icon,
                         size: iconSize.toDouble(),

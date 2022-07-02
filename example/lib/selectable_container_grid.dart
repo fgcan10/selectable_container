@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:selectable_container/selectable_container.dart';
 
 final List<Color> kGridElements = [
-  Colors.amber[800]!,
-  Colors.deepOrange[800]!,
+  Colors.grey[50]!,
+  Colors.grey[200]!,
+  Colors.grey[400]!,
+  Colors.brown[100]!,
+  Colors.brown[200]!,
   Colors.brown[400]!,
-  Colors.blueGrey[400]!,
-  Colors.blue[400]!,
-  Colors.indigo[400]!,
 ];
 
 class SelectableContainerGrid extends StatefulWidget {
@@ -47,6 +47,8 @@ class _SelectableContainerGridState extends State<SelectableContainerGrid> {
         unselectedBackgroundColor: kGridElements[i],
         selectedBorderColor: Theme.of(context).dialogBackgroundColor,
         unselectedBorderColor: Theme.of(context).dialogBackgroundColor,
+        selectedBackgroundColorIcon: kGridElements[i],
+        unselectedBackgroundColorIcon: Theme.of(context).dialogBackgroundColor,
         selected: _selectedItems[i],
         unselectedIcon: Icons.check_box_outline_blank,
         icon: Icons.check_box,
