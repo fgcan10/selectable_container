@@ -45,8 +45,7 @@ class _SelectableContainerGridState extends State<SelectableContainerGrid> {
       ret.add(SelectableContainer(
         selectedBackgroundColor: kGridElements[i],
         unselectedBackgroundColor: kGridElements[i],
-        selectedBorderColor: Theme.of(context).dialogBackgroundColor,
-        unselectedBorderColor: Theme.of(context).dialogBackgroundColor,
+        borderSize: 0,
         selectedBackgroundColorIcon: Theme.of(context).dialogBackgroundColor,
         unselectedBackgroundColorIcon: Theme.of(context).dialogBackgroundColor,
         selected: _selectedItems[i],

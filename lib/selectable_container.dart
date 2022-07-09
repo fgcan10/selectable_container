@@ -188,12 +188,15 @@ class SelectableContainer extends StatelessWidget {
                     padding: EdgeInsets.all(padding),
                     child: child,
                     decoration: BoxDecoration(
-                        border: Border.all(
-                            color: selected
-                                ? selectedBorderColor ?? theme.primaryColor
-                                : unselectedBorderColor ??
-                                    theme.primaryColorDark,
-                            width: borderSize.toDouble()),
+                        border: borderSize > 0
+                            ? Border.all(
+                                color: selected
+                                    ? selectedBorderColor ?? theme.primaryColor
+                                    : unselectedBorderColor ??
+                                        theme.primaryColorDark,
+                                width: borderSize.toDouble(),
+                              )
+                            : Border.symmetric(),
                         borderRadius: BorderRadius.circular(borderRadius),
                         color: selected
                             ? selectedBackgroundColor ??
