@@ -50,3 +50,7 @@
 ## [1.0.5] - 2022-07-02
 
 * New properties : topIconPosition, bottomIconPosition, leftIconPosition, rightIconPosition
+
+## [1.0.6] - 2022-07-02
+
+* No border (borderSize=0) bug solved.
