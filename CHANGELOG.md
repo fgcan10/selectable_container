@@ -4,7 +4,7 @@
 
 ## [0.0.2] - 2019-11-10
 
-* Beter license and documentation
+* Better license and documentation
 
 ## [0.1.1] - 2019-11-10
 
@@ -12,7 +12,7 @@
 
 ## [0.1.2] - 2019-11-15
 
-* New setting 'elevation' and 'borderradius'
+* New setting 'elevation' and 'border-radius'
 
 ## [0.1.3] - 2019-11-28
 
@@ -41,7 +41,7 @@
 
 ## [1.0.3] - 2022-06-18
 
-* Top, botton, left and right margin
+* Top, button, left and right margin
 
 ## [1.0.4] - 2022-07-02
 
@@ -50,3 +50,7 @@
 ## [1.0.5] - 2022-07-02
 
 * New properties : topIconPosition, bottomIconPosition, leftIconPosition, rightIconPosition
+
+## [1.0.6] - 2022-10-04
+
+* Margin hide with transparent color 

@@ -2,9 +2,11 @@ import 'package:example2/selectable_container_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:selectable_container/selectable_container.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -35,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Selectable Container Example'),
       ),
+      backgroundColor: Colors.grey[500],
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
