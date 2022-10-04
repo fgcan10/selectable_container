@@ -37,7 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Selectable Container Example'),
       ),
-      backgroundColor: Colors.grey[500],
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -69,6 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
             selectedOpacity: 0.8,
             selected: _select2,
             padding: 8.0,
+            elevation: 0,
+            marginColor: Colors.transparent,
             child: buildTextContentOfContainer('Custom color',
                 'Icon, size, position en opacitiy changed', textStyles),
             onValueChanged: (newValue) {
