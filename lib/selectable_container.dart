@@ -172,86 +172,83 @@ class SelectableContainer extends StatelessWidget {
         opacity: selected ? selectedOpacity : unselectedOpacity,
         duration: Duration(milliseconds: opacityAnimationDuration),
         child: Material(
-          elevation: 0.0,
-          child: Material(
-            elevation: elevation,
-            color: marginColor ?? theme.scaffoldBackgroundColor,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                  leftMargin, topMargin, rightMargin, bottomMargin),
-              child: Stack(
-                alignment: iconAlignment,
-                children: <Widget>[
-                  Container(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    margin: EdgeInsets.all(iconSize / 2),
-                    padding: EdgeInsets.all(padding),
-                    child: child,
-                    decoration: BoxDecoration(
-                        border: borderSize > 0
-                            ? Border.all(
-                                color: selected
-                                    ? selectedBorderColor ?? theme.primaryColor
-                                    : unselectedBorderColor ??
-                                        theme.primaryColorDark,
-                                width: borderSize.toDouble(),
-                              )
-                            : Border.symmetric(),
-                        borderRadius: BorderRadius.circular(borderRadius),
-                        color: selected
-                            ? selectedBackgroundColor ??
-                                theme.dialogBackgroundColor
-                            : unselectedBackgroundColor ??
-                                theme.dialogBackgroundColor),
-                  ),
-                  Positioned(
-                    top: topIconPosition,
-                    bottom: bottomIconPosition,
-                    left: leftIconPosition,
-                    right: rightIconPosition,
-                    child: Visibility(
-                        visible: !selected && unselectedIcon != null,
-                        child: Container(
-                          padding: EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: unselectedBorderColorIcon ??
-                                      Colors.white),
-                              shape: BoxShape.circle,
-                              color: unselectedBackgroundColorIcon ??
-                                  theme.primaryColorDark),
-                          child: Icon(
-                            unselectedIcon,
-                            size: iconSize.toDouble(),
-                            color: iconColor,
-                          ),
-                        )),
-                  ),
-                  Positioned(
-                    top: topIconPosition,
-                    bottom: bottomIconPosition,
-                    left: leftIconPosition,
-                    right: rightIconPosition,
-                    child: Visibility(
-                      visible: selected,
+          elevation: elevation,
+          color: marginColor ?? theme.scaffoldBackgroundColor,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                leftMargin, topMargin, rightMargin, bottomMargin),
+            child: Stack(
+              alignment: iconAlignment,
+              children: <Widget>[
+                Container(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  margin: EdgeInsets.all(iconSize / 2),
+                  padding: EdgeInsets.all(padding),
+                  child: child,
+                  decoration: BoxDecoration(
+                      border: borderSize > 0
+                          ? Border.all(
+                              color: selected
+                                  ? selectedBorderColor ?? theme.primaryColor
+                                  : unselectedBorderColor ??
+                                      theme.primaryColorDark,
+                              width: borderSize.toDouble(),
+                            )
+                          : Border.symmetric(),
+                      borderRadius: BorderRadius.circular(borderRadius),
+                      color: selected
+                          ? selectedBackgroundColor ??
+                              theme.dialogBackgroundColor
+                          : unselectedBackgroundColor ??
+                              theme.dialogBackgroundColor),
+                ),
+                Positioned(
+                  top: topIconPosition,
+                  bottom: bottomIconPosition,
+                  left: leftIconPosition,
+                  right: rightIconPosition,
+                  child: Visibility(
+                      visible: !selected && unselectedIcon != null,
                       child: Container(
                         padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: selectedBorderColorIcon ?? Colors.white),
+                                color:
+                                    unselectedBorderColorIcon ?? Colors.white),
                             shape: BoxShape.circle,
-                            color: selectedBackgroundColorIcon ??
-                                theme.primaryColor),
+                            color: unselectedBackgroundColorIcon ??
+                                theme.primaryColorDark),
                         child: Icon(
-                          icon,
+                          unselectedIcon,
                           size: iconSize.toDouble(),
                           color: iconColor,
                         ),
+                      )),
+                ),
+                Positioned(
+                  top: topIconPosition,
+                  bottom: bottomIconPosition,
+                  left: leftIconPosition,
+                  right: rightIconPosition,
+                  child: Visibility(
+                    visible: selected,
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: selectedBorderColorIcon ?? Colors.white),
+                          shape: BoxShape.circle,
+                          color: selectedBackgroundColorIcon ??
+                              theme.primaryColor),
+                      child: Icon(
+                        icon,
+                        size: iconSize.toDouble(),
+                        color: iconColor,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

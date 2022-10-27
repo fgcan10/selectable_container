@@ -32,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var textStyles = Theme.of(context).textTheme;
 
     return Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(
         title: const Text('Selectable Container Example'),
       ),
@@ -46,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   _select1 = newValue;
                 });
               },
+              marginColor: Colors.transparent,
               selected: _select1,
               padding: 8.0,
               child: buildTextContentOfContainer(
@@ -61,6 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
             iconAlignment: Alignment.topLeft,
             icon: Icons.thumb_up,
             unselectedIcon: Icons.add_box,
+            marginColor: Colors.transparent,
+            elevation: 0,
             iconSize: 24,
             unselectedOpacity: 1,
             selectedOpacity: 0.8,
@@ -79,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
             iconSize: 20,
             icon: Icons.star,
             iconColor: Colors.yellowAccent,
+            marginColor: Colors.transparent,
             unselectedOpacity: 0.3,
             opacityAnimationDuration: 300,
             elevation: 4.0,
