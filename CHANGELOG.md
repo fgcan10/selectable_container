@@ -54,3 +54,7 @@
 ## [1.0.6] - 2022-07-02
 
 * No border (borderSize=0) bug solved.
+
+## [1.0.7] - 2022-27-10
+
+* Bug related with transparent margin solved. Thanks to rvndsngwn
